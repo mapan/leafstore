@@ -1,0 +1,17 @@
+{% extends 'store/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{% block title %} Collection {% endblock %}</title>
+</head>
+
+<body>
+  {% block body %}
+  <h2>Collection</h2>
+  <img src="{% static 'store/leaf3.jpg' %}">
+  {% endblock %}
+</body>
+
+</html>

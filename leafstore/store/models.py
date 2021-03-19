@@ -1,11 +1,61 @@
 from django.db import models
+from django.utils import timezone
+
+
+class Collection(models.Model):
+  name = models.CharField(max_length=200,
+                          default='brooch',
+                          db_index=True)
+  # slug = models.SlugField(max_length=200,
+  #                         unique=True)
+
+  class Meta:
+    ordering = ('name',)
+
+  def __str__(self):
+    return self.name
+
 
 class Product(models.Model):
-  name = models.CharField(max_length=200)
-  details = models.TextField(default='d')
-  price = models.FloatField(default=10)
-  
+  collection = models.ForeignKey(Collection,
+                                 related_name='products',
+                                 on_delete=models.CASCADE)
+  name = models.CharField(max_length=200, db_index=True)
+  # slug = models.SlugField(max_length=200, db_index=True)
+  description = models.TextField(blank=True)
+  price = models.DecimalField(max_digits=10, decimal_places=2,
+                              default=10)
+  created = models.DateTimeField(auto_now_add=True)
+  updated = models.DateTimeField(auto_now=True)
+
+  class Meta:
+    ordering = ('name',)
+    # index_together = (('id', 'slug'),)
+
+  def __str__(self):
+    return self.name
+
+
+class ProductColor(models.Model):
+  product = models.ForeignKey(Product,
+                              related_name='colors',
+                              on_delete=models.CASCADE)
+  color = models.CharField(max_length=10, default='red')
+  stock = models.DecimalField(max_digits=10, decimal_places=0,
+                              default=1)
+
+  class Meta:
+    ordering = ('color',)
+
+  def __str__(self):
+    return self.color
+
+
 class Picture(models.Model):
-  product = models.ForeignKey(Product, on_delete=models.CASCADE)
+  color = models.ForeignKey(ProductColor,
+                            related_name='pictures',
+                            on_delete=models.CASCADE)
   image = models.ImageField(upload_to='images/')
 
+  def __str__(self):
+    return 'Picture'

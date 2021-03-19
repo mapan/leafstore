@@ -5,15 +5,16 @@ from .models import Product
 
 
 def index(request):
-    products = list(Product.objects.all())
-    context = {'products': products}
-    return render(request, 'store/index.html', context)
+  return render(request, 'store/index.html')
+
 
 def story(request):
-    return render(request, 'store/story.html')
+  return render(request, 'store/story.html')
+
 
 def collection(request):
-    return render(request, 'store/collection.html')
+  return render(request, 'store/collection.html')
+
 
 def contact(request):
-    return render(request, 'store/contact.html')
+  return render(request, 'store/contact.html')

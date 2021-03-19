@@ -10,6 +10,15 @@
 <body>
   {% block body %}
   <h2>Collection</h2>
+  <ul>
+    {% for product in products %}
+    <div>{{ product.name }}
+      {% for picture in product.picture_set.all %}
+      <img src="{{ picture.image.url}}" width="300" height="300">
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </ul>
   <img src="{% static 'store/leaf3.jpg' %}">
   {% endblock %}
 </body>

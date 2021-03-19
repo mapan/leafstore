@@ -9,20 +9,48 @@
 
 <body>
   {% block body %}
-  <h2>Home</h2>
+  <section class="home">
+      <img class="img-center" src="{% static 'store/leaf2.jpg' %}">
 
-  <ul>
-    {% for product in products %}
-      <div>{{ product.name }}
-      {% for picture in product.picture_set.all %}
-          <img src="{{ picture.image.url}}" width="300" height="300">
-      {% endfor %}
+     <div class="home-info">
+        <h2>
+          <a href="{% url 'collection' %}">Our Core Collection</a>
+        </h2>
+        <div>
+          <a href="{% url 'collection' %}">A series of hand made brooch. From desgin to finish stage,
+          each of them took 20 hours to complete. <br> 手縫串珠胸針</a>
       </div>
-    {% endfor %}
-  </ul>
-  
+    </div>
+    </section>
 
-  <img src="{% static 'store/leaf2.jpg' %}">
+    <section class="home1">
+      <img class ="img-right" src="{% static 'store/leaf2.jpg' %}">
+      <div class="home-info1">
+        <h2>
+          <a href="{% url 'collection' %}">Our Core Collection</a>
+        </h2>
+        <div>
+          <a href="{% url 'collection' %}">A series of hand made brooch. From desgin to finish stage,
+            each of them took 20 hours to complete. A series of hand made brooch. From desgin to finish stage,
+            each of them took 20 hours to complete. <br> 手縫串珠胸針</a>
+        </div>
+      </div>
+    </secstion>
+
+  <section class="home2">
+    <img class ="img-left" src="{% static 'store/leaf2.jpg' %}">
+    <div class="home-info2">
+      <h2>
+        <a href="{% url 'collection' %}">Our Core Collection</a>
+      </h2>
+      <div>
+        <a href="{% url 'collection' %}">A series of hand made brooch. From desgin to finish stage,
+          each of them took 20 hours to complete. A series of hand made brooch. From desgin to finish stage,
+          each of them took 20 hours to complete. <br> 手縫串珠胸針</a>
+      </div>
+    </div>
+  </secstion>
+
   {% endblock %}
 </body>
 

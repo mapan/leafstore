@@ -26,19 +26,22 @@
         <a class="nav-link" href="{% url 'index' %}">Home</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="{% url 'collection' %}" id="navbarDropdown" role="button"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Collection</a>
+        <a class="nav-link dropdown-toggle" href="{% url 'collection' %}" id="navbarDropdown"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Collection</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{% url 'collection' %}">Collection 1</a>
           <a class="dropdown-item" href="{% url 'collection' %}">Collection 2</a>
         </div>
       </li>
+
+
       <li class="nav-item">
         <a class="nav-link" href="{% url 'story' %}">Our Story</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'contact' %}">Contact</a>
       </li>
+
     </ul>
     <form class="form-inline my-1 my-lg-0">
       <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">

@@ -13,8 +13,9 @@ def story(request):
 
 
 def collection(request):
-  return render(request, 'store/collection.html')
-
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'store/collection.html', context)
 
 def contact(request):
   return render(request, 'store/contact.html')

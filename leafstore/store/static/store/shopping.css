@@ -3,25 +3,58 @@
     min-height: 100%;
 } */
 
-img {
+* {
+    font-family: Prata,serif;
+}
+
+section{
+    display:block;
+    
+}
+
+
+img{
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
     position: relative;
     display: block;
+    margin-bottom: 20px;
+    margin-top:20px;
 }
+
+.img-center {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 7%;
+    margin-top:3%;
+}
+
+.img-right {
+    margin-bottom: 7%;
+    display:table-cell;
+    width: 50%;
+    display: inline-block !important;
+}
+
+.img-left {
+    margin-bottom: 7%;
+    display:table-cell;   
+    width: 50%;
+    display: inline-block !important;
+    float:right;
+} 
 
 
 #footer {
     background-color: #eef0eb;
     /* position: relative;
     position: static; */
+    position: relative;
     bottom: 0;
     left: 0;
     width:100%;
     height: 10em;
     padding: 2em;
-    overflow: hidden;
+    clear:both;
 }
 
 .menu {
@@ -33,7 +66,71 @@ img {
     color: black;
   }
 
-  h2{
-      text-align: center;
-  }
- 
+.home-info a:hover, a:visited, a:link, a:active{
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.navbar-brand,.navbar {
+    font-size: 1.3em;
+}
+
+.home-info{
+    background-color: #f0ecd7;
+    padding:30px;
+    margin: 30px;
+    width:30%;
+    position:absolute;
+    top: 45%;
+    left: 7%;
+    z-index:1;
+    opacity:0.8;
+}
+
+.home-info1{
+    background-color: #0d2941;
+    padding:30px;
+    width:40%;
+    margin-top: 15%;
+    display:table-cell;
+    float:right;
+    opacity:0.8;
+    color:blanchedalmond !important;
+}
+
+.home-info1 a{
+    text-decoration: none !important;
+    color: #f0ecd7 !important;
+}
+
+.home-info2{
+    background-color: #eee2a7;
+    padding:30px;
+    width:40%;
+    display:table-cell;
+    float:left;
+    margin-top: 5%;
+    opacity:0.8;
+}
+
+
+@media (max-width:900px){
+    .home-info{
+        background-color: #f0ecd7;
+        padding:20px;
+        margin: -120px 10px 10px 0;
+        width:60%;
+        position:relative;
+        z-index:1;
+        opacity:0.8;
+        font-size: 2vw;
+    }
+    h2{
+        font-size: 3.5vw;
+    }
+    .home-info1,.home-info2 {
+        font-size: 2vw;
+        width:40%;
+        padding:20px;
+    }
+}

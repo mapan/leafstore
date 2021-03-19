@@ -11,6 +11,7 @@ class Collection(models.Model):
 
   class Meta:
     ordering = ('name',)
+    verbose_name_plural = '1. Collections'
 
   def __str__(self):
     return self.name
@@ -35,6 +36,7 @@ class Product(models.Model):
   class Meta:
     ordering = ('name',)
     index_together = (('id', 'slug'),)
+    verbose_name_plural = '2. Products'
 
   def __str__(self):
     return self.name
@@ -50,6 +52,7 @@ class ProductColor(models.Model):
 
   class Meta:
     ordering = ('color',)
+    verbose_name_plural = '3. ProductColors'
 
   def __str__(self):
     return self.color

@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils import timezone
+from slugify import slugify, slugify_unicode
 
 
 class Collection(models.Model):
@@ -7,7 +7,7 @@ class Collection(models.Model):
                           default='brooch',
                           db_index=True)
   # slug = models.SlugField(max_length=200,
-  #                         unique=True)
+  #                         unique=True, editable=False)
 
   class Meta:
     ordering = ('name',)
@@ -21,16 +21,20 @@ class Product(models.Model):
                                  related_name='products',
                                  on_delete=models.CASCADE)
   name = models.CharField(max_length=200, db_index=True)
-  # slug = models.SlugField(max_length=200, db_index=True)
+  slug = models.SlugField(max_length=200, db_index=True, editable=False)
   description = models.TextField(blank=True)
   price = models.DecimalField(max_digits=10, decimal_places=2,
                               default=10)
   created = models.DateTimeField(auto_now_add=True)
   updated = models.DateTimeField(auto_now=True)
 
+  def save(self, *args, **kwargs):
+    self.slug = slugify(self.name)
+    super(Collection, self).save(*args, **kwargs)
+
   class Meta:
     ordering = ('name',)
-    # index_together = (('id', 'slug'),)
+    index_together = (('id', 'slug'),)
 
   def __str__(self):
     return self.name

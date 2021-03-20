@@ -1,4 +1,5 @@
 {% load static %}
+{% load collection_tags %}
 <!DOCTYPE html>
 
 <html>
@@ -26,15 +27,15 @@
         <a class="nav-link" href="{% url 'index' %}">Home</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="{% url 'collection' %}" id="navbarDropdown"
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Collection</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'collection' %}">Collection 1</a>
-          <a class="dropdown-item" href="{% url 'collection' %}">Collection 2</a>
+          {% get_all_collections as collections %}
+          {% for collection in collections %}
+            <a class="dropdown-item" href="{{ collection.get_absolute_url }}">{{ collection.name }}</a>
+          {% endfor %}
         </div>
       </li>
-
-
       <li class="nav-item">
         <a class="nav-link" href="{% url 'story' %}">Our Story</a>
       </li>

@@ -32,6 +32,7 @@ class CollectionAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
   inlines = [
       ProductColorInline,
+      PictureInline,
   ]
 
 

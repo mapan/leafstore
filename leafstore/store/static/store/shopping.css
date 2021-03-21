@@ -5,6 +5,7 @@
 
 * {
     font-family: Prata,serif;
+    box-sizing: Border-box;
 }
 
 section{
@@ -12,11 +13,10 @@ section{
     
 }
 
-
 img{
     width: 50%;
     position: relative;
-    display: block;
+    display:block;
     margin-bottom: 20px;
     margin-top:20px;
 }
@@ -43,6 +43,26 @@ img{
     float:right;
 } 
 
+.product-img{
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.collection-main{
+    width:35%;
+    height:30%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.product-div{
+    display: inline-block !important;
+    padding:20px;
+    font-size: 0;
+    margin-left: -4px;
+
+}
 
 #footer {
     background-color: #eef0eb;
@@ -113,6 +133,9 @@ img{
     opacity:0.8;
 }
 
+.collection{
+    text-align: center;
+}
 
 @media (max-width:900px){
     .home-info{
@@ -132,5 +155,8 @@ img{
         font-size: 2vw;
         width:40%;
         padding:20px;
+    }
+
+ 
     }
 }

@@ -9,17 +9,15 @@
 
 <body>
   {% block body %}
-  <h2>Collection</h2>
-  <ul>
+  <h2 class="collection">Collection</h2>
+  <img class="collection-main" src="{% static 'store/collection.jpg' %}">
+
     {% for product in products %}
-    <div>{{ product.name }}
-      {% for picture in product.pictures.all %}
-      <img src="{{ picture.image.url}}" width="300" height="300">
-      {% endfor %}
-    </div>
+    <div class="container col-5 col-md-4 product-div"> 
+          <h4 class="collection">{{ product.name }}</h4>
+            <img class="product-img" src="{{ product.pictures.all.0.image.url}}">
+          </div>
     {% endfor %}
-  </ul>
-  <img src="{% static 'store/leaf3.jpg' %}">
   {% endblock %}
 </body>
 

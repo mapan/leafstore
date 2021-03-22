@@ -60,21 +60,19 @@ class ProductColor(models.Model):
                               default=1)
 
   class Meta:
-    ordering = ('color',)
+    ordering = ('product__name', 'color',)
     verbose_name_plural = '3. ProductColors'
 
   def __str__(self):
-    return self.color
+    return ('Product: {} Color: {}'.format(self.product.name,
+                                            self.color))
 
 
 class Picture(models.Model):
-  product = models.ForeignKey(Product,
-                              related_name='pictures',
-                              on_delete=models.CASCADE)
   color = models.ForeignKey(ProductColor,
                             related_name='pictures',
                             on_delete=models.CASCADE)
   image = models.ImageField(upload_to='images/')
 
   def __str__(self):
-    return 'Picture'
+    return self.color.color

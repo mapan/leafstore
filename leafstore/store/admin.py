@@ -26,14 +26,15 @@ class CollectionAdmin(admin.ModelAdmin):
   inlines = [
       ProductInline,
   ]
+  list_filter = ['name']
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
   inlines = [
       ProductColorInline,
-      PictureInline,
   ]
+  list_filter = ['name']
 
 
 @admin.register(ProductColor)
@@ -41,3 +42,4 @@ class ProductColorAdmin(admin.ModelAdmin):
   inlines = [
       PictureInline,
   ]
+  list_filter = ['product__name', 'color']

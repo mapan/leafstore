@@ -9,23 +9,31 @@
 
 <body>
   {% block body %}
-  <h2 class="collection">Collection</h2>
-  <img class="collection-main" src="{% static 'store/collection.jpg' %}">
+  <div class="box">
+    <h2 class="collection2">Collection</h2>
+    <img class="collection-main" src="{% static 'store/leaf.jpg' %}">
+</div>
 
+  <div class="container-fluid  product-div"> 
+  <div class="row ">
     {% for collection in collections %}
       <p>{{ collection.name }}</p>
       {% for product in collection.products.all %}
       <p>{{ product.name }}</p>
         {% for color in product.colors.all %}
           {% if color.stock %}
-            <div class="container col-5 col-md-4 product-div"> 
-              <h4 class="collection">{{ product.name }}</h4>
+            <div class="product-div2 col-5 col-md-4 col-lg-4">
               <img class="product-img" src="{{ color.pictures.all.0.image.url}}">
+              <h5 class="collection">{{ product.name }}</h5>
+              <h6 class="collection">Price: ${{ product.price }}</h6>
             </div>
           {% endif %}
         {% endfor %}
       {% endfor %}
+  </div>
     {% endfor %}
+  </div>
+</div>
   {% endblock %}
 </body>
 

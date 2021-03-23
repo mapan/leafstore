@@ -27,7 +27,7 @@
         <a class="nav-link" href="{% url 'index' %}">Home</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown"
+        <a class="nav-link dropdown-toggle" href="{% url 'collection' %}" id="navbarDropdown"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Collection</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           {% get_all_collections as collections %}

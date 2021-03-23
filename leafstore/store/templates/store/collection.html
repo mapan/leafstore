@@ -12,11 +12,19 @@
   <h2 class="collection">Collection</h2>
   <img class="collection-main" src="{% static 'store/collection.jpg' %}">
 
-    {% for product in products %}
-    <div class="container col-5 col-md-4 product-div"> 
-          <h4 class="collection">{{ product.name }}</h4>
-            <img class="product-img" src="{{ product.pictures.all.0.image.url}}">
-          </div>
+    {% for collection in collections %}
+      <p>{{ collection.name }}</p>
+      {% for product in collection.products.all %}
+      <p>{{ product.name }}</p>
+        {% for color in product.colors.all %}
+          {% if color.stock %}
+            <div class="container col-5 col-md-4 product-div"> 
+              <h4 class="collection">{{ product.name }}</h4>
+              <img class="product-img" src="{{ color.pictures.all.0.image.url}}">
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
     {% endfor %}
   {% endblock %}
 </body>

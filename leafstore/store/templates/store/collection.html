@@ -5,6 +5,9 @@
 
 <head>
   <title>{% block title %} Collection {% endblock %}</title>
+  {% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'store/css/collection.css' %}">
+  {% endblock %}
 </head>
 
 <body>

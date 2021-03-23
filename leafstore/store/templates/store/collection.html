@@ -22,7 +22,7 @@
       <p>{{ product.name }}</p>
         {% for color in product.colors.all %}
           {% if color.stock %}
-            <div class="product-div2 col-5 col-md-4 col-lg-4">
+            <div class="product-div2 col-6 col-md-4 col-lg-4">
               <img class="product-img" src="{{ color.pictures.all.0.image.url}}">
               <h5 class="collection">{{ product.name }}</h5>
               <h6 class="collection">Price: ${{ product.price }}</h6>

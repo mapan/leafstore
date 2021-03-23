@@ -49,18 +49,22 @@ img{
 }
 
 .collection-main{
-    width:50%;
-    height:30%;
+    width:40%;
+    height:auto;
     margin-right: auto;
     margin-left: auto;
 }
 
 .product-div{
-    display: inline-block !important;
-    padding:20px;
+    display: inline-block;
     font-size: 0;
-    margin: 0 auto;
+    margin: 0 auto;   
+    align-content: space-between; 
+    padding: 0 7%;
+}
 
+.product-div2{
+   margin-bottom: 5%;
 }
 
 #footer {
@@ -134,7 +138,7 @@ img{
 
 .collection{
     text-align: center;
-    margin:0;
+    margin:1px;
 }
 
 .collection2{
@@ -187,14 +191,14 @@ img{
         margin-top:5%;
     }
 
-    .product-img, .collection-main{
-        width: 70%;
+    .product-img{
+        width: auto;
+        height: 20vh;
         margin: 0 auto;
     }
 
-    /* .product-div2{
-        margin-left: 30px;
-    } */
- 
+    .collection-main{
+        width:60%;
+    }
    
 }

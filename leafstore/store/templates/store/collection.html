@@ -18,26 +18,27 @@
 </div>
 
   <div class="container-fluid  collection-div"> 
-  <div class="row ">
-    {% for collection in collections %}
-      <p>{{ collection.name }}</p>
-      {% for product in collection.products.all %}
-      <p>{{ product.name }}</p>
-        {% for color in product.colors.all %}
-          {% if color.stock %}
-
-        <div class="product-div col-6 col-md-4 col-lg-4">
-          <a href="{{ product.get_absolute_url }}">
-            <img class="product-img" src="{{ color.pictures.all.0.image.url}}">
-          </a>
-          <h5 class="product-text">{{ product.name }}</h5>
-          <h6 class="product-text">Price: ${{ product.price }}</h6>
-        </div>
-
-          {% endif %}
-        {% endfor %}
-      {% endfor %}
+  {% for collection in collections %}
+    <div class="row2">
+      <h5>{{ collection.name }}</h5>
     </div>
+    <div class="row ">
+    {% for product in collection.products.all %}
+      <!-- <p>{{ product.name }}</p> -->
+      {% for color in product.colors.all %}
+        {% if color.stock %}
+          <!-- <div class="row "> -->
+            <div class="product-div col-6 col-md-4 col-lg-4">
+              <a href="{{ product.get_absolute_url }}">
+                <img class="product-img" src="{{ color.pictures.all.0.image.url}}">
+              </a>
+              <h5 class="product-text">{{ product.name }}</h5>
+              <h6 class="product-text">Price: ${{ product.price }}</h6>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
   {% endfor %}
   </div>
 </div>

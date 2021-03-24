@@ -50,6 +50,9 @@ class Product(models.Model):
   def __str__(self):
     return self.name
 
+  def get_absolute_url(self):
+    return reverse('product', args=[self.id, self.slug])
+
 
 class ProductColor(models.Model):
   product = models.ForeignKey(Product,
@@ -65,7 +68,7 @@ class ProductColor(models.Model):
 
   def __str__(self):
     return ('Product: {} Color: {}'.format(self.product.name,
-                                            self.color))
+                                           self.color))
 
 
 class Picture(models.Model):

@@ -24,8 +24,17 @@ def collection(request, slug=None):
   context = {'collection': collection,
              'collections': collections,
              'products': products}
-  
+
   return render(request, 'store/collection.html', context)
+
+
+def product(request, id, slug):
+  product = get_object_or_404(Product,
+                              id=id,
+                              slug=slug)
+  return render(request,
+                'store/product.html',
+                {'product': product})
 
 
 def contact(request):

@@ -46,20 +46,21 @@
 </div>
 
 {% get_product_colors product as colors %}
+{% get_color_quantity product as color_id_to_quantity %}
+{{ color_id_to_quantity|json_script:"color_id_to_quantity" }}
+
 <form action="{% url 'cart:cart_add' product.id %}" method="POST">
   {% csrf_token %}
-  <label for="color">Color</label>
-  <select name="color" id="color">
+  <select id="color" class="custom-select">
+    <option selected>Select Color</option>
     {% for color in colors %}
     <option value="{{ color.id }}">{{ color.name }}</option>
     {% endfor %}
   </select>
   <label for="quantity">Quantity</label>
-  <select name="quantity" id="quantity">
-    {% for color in colors %}
-    <option>{{color.stock}}</option>
-    {% endfor %}
-  </select>
-  <input type="submit" value="Add to cart">
+  <select id="quantity" class="custom-select"></select>
+  <input type="submit" class="btn btn-primary" value="Add to cart">
 </form>
+
+<script src="{% static 'store/javascript/product.js' %}"></script>
 {% endblock %}

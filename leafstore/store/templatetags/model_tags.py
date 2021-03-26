@@ -19,3 +19,12 @@ def get_product_colors(product):
 def get_product_pictures(product):
   colors = get_product_colors(product)
   return Picture.objects.filter(color__in=colors)
+
+
+@register.simple_tag
+def get_color_quantity(product):
+  colors = get_product_colors(product)
+  color_id_to_quantity = {}
+  for color in colors:
+    color_id_to_quantity[color.id] = int(color.stock)
+  return color_id_to_quantity

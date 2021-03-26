@@ -18,20 +18,20 @@
   </div>
 
   {% for collection in collections %}
+  <section>
     <div class="container-fluid  collection-div"> 
       <div class="row">
-        <div class="col">
+        <div class="collection-name">
           <h5>Collection Name: {{ collection.name }}</h5>
-          <h5>------------------------------<br></h5>
         </div>
       </div>
     {% for product in collection.products.all %}
       <div class="row">
-        <div class="col">
+        <div class="product-name">
           <h5>Product Name: {{ product.name }}</h5>
-          <h5>------------------------------<br></h5>
         </div>
       </div>
+
       <div class="row">
       {% for color in product.colors.all %}
         {% if color.stock %}
@@ -47,6 +47,7 @@
       </div>
     {% endfor %}
     </div>
+  </section>
   {% endfor %}
   {% endblock %}
 </body>

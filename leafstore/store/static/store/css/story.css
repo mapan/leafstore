@@ -1,0 +1,10 @@
+.story-body{
+    margin:5% 7% 10% 7%;
+}
+
+#header-pic, #header-text{
+    text-align: center;
+    margin-left: auto;
+    margin-right:auto;
+    width: 60%;
+}

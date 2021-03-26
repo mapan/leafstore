@@ -1,18 +1,15 @@
 {% extends 'store/base.html' %}
 {% load static %}
-{% load collection_tags %}
-<!DOCTYPE html>
-<html>
+{% load model_tags %}
 
-<head>
-  <title>{% block title %} product {% endblock %}</title>
-  {% block extra_css %}
-  <link rel="stylesheet" type="text/css" href="{% static 'store/css/product.css' %}">
-  {% endblock %}
-</head>
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'store/css/product.css' %}">
+{% endblock %}
+
+{% block title %} Product {% endblock %}
 
 {% block body %}
-
 {% get_product_pictures product as pictures %}
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -65,7 +62,4 @@
   </select>
   <input type="submit" value="Add to cart">
 </form>
-
 {% endblock %}
-
-</html>

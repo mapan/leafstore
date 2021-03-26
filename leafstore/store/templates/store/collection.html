@@ -1,55 +1,49 @@
 {% extends 'store/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
 
-<head>
-  <title>{% block title %} Collection {% endblock %}</title>
-  {% block extra_css %}
-  <link rel="stylesheet" type="text/css" href="{% static 'store/css/collection.css' %}">
-  {% endblock %}
-</head>
 
-<body>
-  {% block body %}
-  <div class="box">
-    <h2 class="title">Collection</h2>
-    <img class="header-pic" src="{% static 'store/leaf.jpg' %}">
-  </div>
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'store/css/collection.css' %}">
+{% endblock %}
 
-  {% for collection in collections %}
-  <section>
-    <div class="container-fluid  collection-div"> 
-      <div class="row">
-        <div class="collection-name">
-          <h5>Collection Name: {{ collection.name }}</h5>
+{% block title %} Collection {% endblock %}
+
+{% block body %}
+<div class="box">
+  <h2 class="title">Collection</h2>
+  <img class="header-pic" src="{% static 'store/images/leaf.jpg' %}">
+</div>
+
+{% for collection in collections %}
+<section>
+  <div class="container-fluid  collection-div"> 
+    <div class="row">
+      <div class="collection-name">
+        <h5>Collection Name: {{ collection.name }}</h5>
+      </div>
+    </div>
+  {% for product in collection.products.all %}
+    <div class="row">
+      <div class="product-name">
+        <h5>Product Name: {{ product.name }}</h5>
+      </div>
+    </div>
+
+    <div class="row">
+    {% for color in product.colors.all %}
+      {% if color.stock %}
+        <div class="product-div col-6 col-md-4 col-lg-4">
+          <a href="{{ product.get_absolute_url }}">
+            <img class="product-img" src="{{ color.pictures.all.0.image.url }}">
+            <h5 class="product-text">Color: {{ color.color }}</h5>
+            <h6 class="product-text">Price: ${{ product.price }}</h6>
+          </a>
         </div>
-      </div>
-    {% for product in collection.products.all %}
-      <div class="row">
-        <div class="product-name">
-          <h5>Product Name: {{ product.name }}</h5>
-        </div>
-      </div>
-
-      <div class="row">
-      {% for color in product.colors.all %}
-        {% if color.stock %}
-          <div class="product-div col-6 col-md-4 col-lg-4">
-            <a href="{{ product.get_absolute_url }}">
-              <img class="product-img" src="{{ color.pictures.all.0.image.url }}">
-              <h5 class="product-text">Color: {{ color.color }}</h5>
-              <h6 class="product-text">Price: ${{ product.price }}</h6>
-            </a>
-          </div>
-        {% endif %}
-      {% endfor %}
-      </div>
+      {% endif %}
     {% endfor %}
     </div>
-  </section>
   {% endfor %}
-  {% endblock %}
-</body>
-
-</html>
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

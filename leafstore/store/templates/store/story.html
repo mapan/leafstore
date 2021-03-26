@@ -3,15 +3,26 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>{% block title %} Our Story {% endblock %}</title>
-</head>
+  <head>
+    <title>{% block title %} Our Story {% endblock %}</title>
+    {% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/story.css' %}">
+    {% endblock %}
+  </head>
 
-<body>
-  {% block body %}
-  <h2>Our Story</h2>
-  <img src="{% static 'store/leaf4.jpg' %}">
-  {% endblock %}
-</body>
+  <body>
+    {% block body %}
+      <section class="story-body">
+        <div class="header">
+          <h2 id="header-text">Our Story</h2>
+          <img id="header-pic" src="{% static 'store/leaf4.jpg' %}">
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pretium fusce id velit ut tortor pretium viverra. Semper viverra nam libero justo laoreet. Suscipit adipiscing bibendum est ultricies integer quis auctor. Sapien faucibus et molestie ac feugiat sed. Metus aliquam eleifend mi in nulla posuere sollicitudin. Odio morbi quis commodo odio aenean sed adipiscing diam donec. Duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Et tortor consequat id porta nibh venenatis cras. Lorem sed risus ultricies tristique nulla aliquet. Tempus quam pellentesque nec nam aliquam sem. Purus sit amet luctus venenatis lectus. Commodo elit at imperdiet dui accumsan. Velit scelerisque in dictum non.
+        <br>
+        <br>
+        Et tortor consequat id porta. Sociis natoque penatibus et magnis dis parturient montes nascetur. Faucibus et molestie ac feugiat sed lectus. Bibendum arcu vitae elementum curabitur vitae nunc sed velit dignissim. In hac habitasse platea dictumst vestibulum rhoncus est. In iaculis nunc sed augue lacus viverra vitae. Mauris commodo quis imperdiet massa tincidunt. Morbi tristique senectus et netus et malesuada fames ac turpis. Donec adipiscing tristique risus nec feugiat in fermentum posuere urna. Ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla. Magna fringilla urna porttitor rhoncus dolor. Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Massa vitae tortor condimentum lacinia quis vel eros. Tellus id interdum velit laoreet. Vitae semper quis lectus nulla at volutpat diam ut.</p>
+      </section>
+      {% endblock %}
+  </body>
 
 </html>

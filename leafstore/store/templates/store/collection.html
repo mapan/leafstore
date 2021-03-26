@@ -35,7 +35,7 @@
         <div class="product-div col-6 col-md-4 col-lg-4">
           <a href="{{ product.get_absolute_url }}">
             <img class="product-img" src="{{ color.pictures.all.0.image.url }}">
-            <h5 class="product-text">Color: {{ color.color }}</h5>
+            <h5 class="product-text">Color: {{ color.name }}</h5>
             <h6 class="product-text">Price: ${{ product.price }}</h6>
           </a>
         </div>

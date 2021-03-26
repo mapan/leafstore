@@ -58,17 +58,17 @@ class ProductColor(models.Model):
   product = models.ForeignKey(Product,
                               related_name='colors',
                               on_delete=models.CASCADE)
-  color = models.CharField(max_length=10)
+  name = models.CharField(max_length=10)
   stock = models.DecimalField(max_digits=10, decimal_places=0,
                               default=1)
 
   class Meta:
-    ordering = ('product__name', 'color',)
+    ordering = ('product__name', 'name',)
     verbose_name_plural = '3. ProductColors'
 
   def __str__(self):
     return ('Product: {} Color: {}'.format(self.product.name,
-                                           self.color))
+                                           self.name))
 
 
 class Picture(models.Model):
@@ -78,4 +78,4 @@ class Picture(models.Model):
   image = models.ImageField(upload_to='images/')
 
   def __str__(self):
-    return self.color.color
+    return self.color.name

@@ -27,7 +27,7 @@
         </a>
       </td>
       <td>{{ product.name }}</td>
-      <td>{{ color.color }}</td>
+      <td>{{ color.name }}</td>
       <td>{{ item.quantity }}</td>
       <td>
         <form action="{% url 'cart:cart_add2' product.id color.id %}" method="post">

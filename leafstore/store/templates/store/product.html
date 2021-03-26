@@ -51,7 +51,7 @@
   <label for="color">Color</label>
   <select name="color" id="color">
     {% for color in colors %}
-    <option value="{{ color.id }}">{{ color.color }}</option>
+    <option value="{{ color.id }}">{{ color.name }}</option>
     {% endfor %}
   </select>
   <label for="quantity">Quantity</label>

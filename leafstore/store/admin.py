@@ -42,4 +42,4 @@ class ProductColorAdmin(admin.ModelAdmin):
   inlines = [
       PictureInline,
   ]
-  list_filter = ['product__name', 'color']
+  list_filter = ['product__name', 'name']

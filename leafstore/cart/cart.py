@@ -42,8 +42,8 @@ class Cart(object):
     cart = self.cart.copy()
     for key in self.cart.keys():
       product_id, color_id = literal_eval(key)
-      cart[key]['product'] = Product.objects.filter(id=product_id)
-      cart[key]['color'] = ProductColor.objects.filter(id=color_id)
+      cart[key]['product'] = Product.objects.get(id=product_id)
+      cart[key]['color'] = ProductColor.objects.get(id=color_id)
     for item in cart.values():
       item['price'] = Decimal(item['price'])
       item['total_price'] = item['price'] * item['quantity']

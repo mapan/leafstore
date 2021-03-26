@@ -6,25 +6,27 @@ from .forms import CartAddProductForm
 
 
 @require_POST
-def cart_add(request, product_id, color_id):
+def cart_add(request, product_id, color_id=None):
   cart = Cart(request)
   product = get_object_or_404(Product, id=product_id)
+  color_id = color_id or request.POST.get('color')
   color = get_object_or_404(ProductColor, id=color_id)
-  form = CartAddProductForm(request.POST)
-  if form.is_valid():
-    cd = form.cleaned_data
-    cart.add(product=product,
-             color=color,
-             quantity=cd['quantity'],
-             override_quantity=cd['override'])
+  # form = CartAddProductForm(request.POST)
+  # if form.is_valid():
+  #   cd = form.cleaned_data
+  cart.add(product=product,
+           color=color,
+           quantity=int(request.POST.get('quantity')),
+           override_quantity=False)
   return redirect('cart:cart_detail')
 
 
 @require_POST
-def cart_remove(request, product_id):
+def cart_remove(request, product_id, color_id):
   cart = Cart(request)
   product = get_object_or_404(Product, id=product_id)
-  cart.remove(product)
+  color = get_object_or_404(ProductColor, id=color_id)
+  cart.remove(product, color)
   return redirect('cart:cart_detail')
 
 

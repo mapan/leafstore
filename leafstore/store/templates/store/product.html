@@ -1,5 +1,6 @@
 {% extends 'store/base.html' %}
 {% load static %}
+{% load collection_tags %}
 <!DOCTYPE html>
 <html>
 
@@ -10,11 +11,10 @@
   {% endblock %}
 </head>
 
-<body>
-  {% block body %}
+{% block body %}
   <div class="box">
     <h2 class="collection2">Collection</h2>
-    <img class="collection-main" src="{% static 'store/leaf.jpg' %}">
+    {% comment %} <img class="collection-main" src="{% static 'store/leaf.jpg' %}"> {% endcomment %}
 </div>
 
   <div class="container-fluid  product-div"> 
@@ -32,8 +32,24 @@
   </div>
     {% endfor %}
   </div>
-</div>
-  {% endblock %}
-</body>
+
+  <form action="{% url 'cart:cart_add' product.id %}" method="POST">
+    {% csrf_token %}
+    {% get_product_colors product as colors %}
+    <label for="color">Color</label>
+    <select name="color" id="color">
+      {% for color in colors %}
+        <option value="{{ color.id }}">{{ color.color }}</option>
+      {% endfor %}
+    </select>
+    <label for="quantity">Quantity</label>
+    <select name="quantity" id="quantity">
+      {% for color in colors %}
+        <option>{{color.stock}}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Add to cart">
+  </form>
+{% endblock %}
 
 </html>

@@ -1,5 +1,6 @@
 {% extends "store/base.html" %}
 {% load static %}
+{% load model_tags %}
 
 
 {% block body %}
@@ -30,9 +31,13 @@
       <td>{{ color.name }}</td>
       <td>{{ item.quantity }}</td>
       <td>
+        {% get_stock_for_color color.id as color_stock_range %}
         <form action="{% url 'cart:cart_add2' product.id color.id %}" method="post">
-          {{ item.update_quantity_form.quantity }}
-          {{ item.update_quantity_form.override }}
+          <select id="quantity" class="custom-select">
+          {% for _ in color_stock_range %}
+            <option>{{ forloop.counter }}</option>
+          {% endfor %}
+          </select>
           <input type="submit" value="Update">
           {% csrf_token %}
         </form>

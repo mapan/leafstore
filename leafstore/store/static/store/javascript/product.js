@@ -1,6 +1,8 @@
 const color_id_to_quantity = JSON.parse(
   document.getElementById('color_id_to_quantity').textContent);
-
+const color_id_to_pictures = JSON.parse(
+  document.getElementById('color_id_to_pictures').textContent);
+console.log(color_id_to_pictures)
 
 function setQuantityOptions() {
   var color_id = document.getElementById("color").value;

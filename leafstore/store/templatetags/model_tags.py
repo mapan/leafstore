@@ -28,3 +28,13 @@ def get_color_quantity(product):
   for color in colors:
     color_id_to_quantity[color.id] = int(color.stock)
   return color_id_to_quantity
+
+
+@register.simple_tag
+def get_color_pictures(product):
+  colors = get_product_colors(product)
+  color_id_to_pictures = {}
+  for color in colors:
+    color_id_to_pictures[color.id] = (
+      [p.image.url for p in color.pictures.all()])
+  return color_id_to_pictures

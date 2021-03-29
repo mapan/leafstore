@@ -2,7 +2,7 @@ const color_id_to_quantity = JSON.parse(
   document.getElementById('color_id_to_quantity').textContent);
 const color_id_to_pictures = JSON.parse(
   document.getElementById('color_id_to_pictures').textContent);
-console.log(color_id_to_pictures)
+
 
 function setQuantityOptions() {
   var color_id = document.getElementById("color").value;
@@ -13,7 +13,7 @@ function setQuantityOptions() {
   }
   var quantity = color_id_to_quantity[color_id];
   var options = "";
-  for (var i = 1; i <= new Array(quantity).length; i++) {
+  for (var i = 1; i <= quantity; i++) {
     options += "<option>" + i + "</option>"
   }
   document.getElementById("quantity").innerHTML = options;

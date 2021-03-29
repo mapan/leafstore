@@ -26,7 +26,7 @@ def get_color_stock(product):
   colors = get_product_colors(product)
   color_id_to_stock = {}
   for color in colors:
-    color_id_to_stock[color.id] = int(color.stock)
+    color_id_to_stock[color.id] = color.stock
   return color_id_to_stock
 
 
@@ -42,4 +42,4 @@ def get_color_pictures(product):
 
 @register.simple_tag
 def get_stock_for_color(color_id):
-  return range(int(ProductColor.objects.get(id=color_id).stock))
+  return range(ProductColor.objects.get(id=color_id).stock)

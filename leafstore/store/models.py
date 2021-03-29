@@ -59,8 +59,7 @@ class ProductColor(models.Model):
                               related_name='colors',
                               on_delete=models.CASCADE)
   name = models.CharField(max_length=10)
-  stock = models.DecimalField(max_digits=10, decimal_places=0,
-                              default=1)
+  stock = models.IntegerField(default=1)
 
   class Meta:
     ordering = ('product__name', 'name',)

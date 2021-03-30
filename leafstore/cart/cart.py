@@ -1,11 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
-from store.models import Product, ProductColor
+from store.models import ProductColor
 from ast import literal_eval
-
-
-def _get_cart_key(product, color):
-  return str((product.id, color.id))
 
 
 class Cart(object):
@@ -17,11 +13,11 @@ class Cart(object):
       self.session[cart_key] = {}
     self.cart = self.session.get(cart_key)
 
-  def add(self, product, color, quantity=1, override_quantity=False):
-    key = _get_cart_key(product, color)
+  def add(self, color, quantity=1, override_quantity=False):
+    key = str(color.id)
     if key not in self.cart:
       self.cart[key] = {
-          'price': str(product.price),
+          'price': str(color.product.price),
           'quantity': 0,
       }
     if override_quantity:
@@ -34,8 +30,8 @@ class Cart(object):
 
     self.save()
 
-  def remove(self, product, color):
-    self.cart.pop(_get_cart_key(product, color), None)
+  def remove(self, color):
+    self.cart.pop(str(color.id), None)
     self.save()
 
   def save(self):
@@ -44,9 +40,7 @@ class Cart(object):
   def __iter__(self):
     cart = self.cart.copy()
     for key in self.cart.keys():
-      product_id, color_id = literal_eval(key)
-      cart[key]['product'] = Product.objects.get(id=product_id)
-      cart[key]['color'] = ProductColor.objects.get(id=color_id)
+      cart[key]['color'] = ProductColor.objects.get(id=int(key))
     for item in cart.values():
       item['price'] = Decimal(item['price'])
       item['total_price'] = item['price'] * item['quantity']

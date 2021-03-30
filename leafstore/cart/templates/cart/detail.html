@@ -19,8 +19,8 @@
   </thead>
   <tbody>
     {% for item in cart %}
-    {% with product=item.product %}
     {% with color=item.color %}
+    {% with product=color.product %}
     <tr>
       <td>
         <a href="{{ product.get_absolute_url }}">
@@ -31,7 +31,7 @@
       <td>{{ color.name }}</td>
       <td>
         {% get_stock_for_color color.id as color_stock_range %}
-        <form action="{% url 'cart:cart_update' product.id color.id %}" method="post">
+        <form action="{% url 'cart:cart_update' color.id %}" method="post">
           <select id="quantity" name="quantity" class="custom-select">
           {% for _ in color_stock_range %}if
             {% if forloop.counter == item.quantity %}
@@ -47,7 +47,7 @@
         </form>
       </td>
       <td>
-        <form action="{% url 'cart:cart_remove' product.id color.id %}" method="post">
+        <form action="{% url 'cart:cart_remove' color.id %}" method="post">
           <input type="submit" value="Remove">
           {% csrf_token %}
         </form>

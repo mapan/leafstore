@@ -5,26 +5,23 @@ from .cart import Cart
 
 
 @require_POST
-def cart_add(request, product_id, color_id=None):
+def cart_add(request, color_id=None):
   cart = Cart(request)
-  product = get_object_or_404(Product, id=product_id)
-  color_id = color_id or request.POST.get('color')
+  color_id = color_id or int(request.POST.get('color'))
   color = get_object_or_404(ProductColor, id=color_id)
   override_quantity = bool(
       request.POST.get('override_quantity', False))
-  cart.add(product=product,
-           color=color,
+  cart.add(color=color,
            quantity=int(request.POST.get('quantity')),
            override_quantity=override_quantity)
   return redirect('cart:cart_detail')
 
 
 @require_POST
-def cart_remove(request, product_id, color_id):
+def cart_remove(request, color_id):
   cart = Cart(request)
-  product = get_object_or_404(Product, id=product_id)
   color = get_object_or_404(ProductColor, id=color_id)
-  cart.remove(product, color)
+  cart.remove(color)
   return redirect('cart:cart_detail')
 
 

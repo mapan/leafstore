@@ -51,7 +51,7 @@
 {% get_color_pictures product as color_id_to_pictures %}
 {{ color_id_to_pictures|json_script:"color_id_to_pictures" }}
 
-<form action="{% url 'cart:cart_add' product.id %}" method="POST" autocomplete="off">
+<form action="{% url 'cart:cart_add' %}" method="POST" autocomplete="off">
   {% csrf_token %}
   <select id="color" name="color" class="custom-select">
     <option value='placeholder' selected>Select Color</option>

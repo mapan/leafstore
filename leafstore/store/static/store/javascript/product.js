@@ -19,7 +19,22 @@ function setQuantityOptions() {
   document.getElementById("quantity").innerHTML = options;
 }
 
+function verifySelections() {
+  var color_id = document.getElementById("color").value;
+  var quantity = document.getElementById("quantity").value;
+  if (!isNaN(parseInt(color_id, 10)) && quantity != '0') {
+    document.getElementById('submit').disabled = false;
+  } else {
+    document.getElementById('submit').disabled = true;
+  }
+}
+
 
 setQuantityOptions();
+verifySelections();
+
 document.getElementById("color").addEventListener(
-  "change", setQuantityOptions);
+  "change", () => {
+    setQuantityOptions();
+    verifySelections();
+  });

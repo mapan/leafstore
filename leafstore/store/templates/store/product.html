@@ -54,14 +54,16 @@
 <form action="{% url 'cart:cart_add' product.id %}" method="POST" autocomplete="off">
   {% csrf_token %}
   <select id="color" name="color" class="custom-select">
-    <option selected>Select Color</option>
+    <option value='placeholder' selected>Select Color</option>
     {% for color in colors %}
       <option value="{{ color.id }}">{{ color.name }}</option>
     {% endfor %}
   </select>
   <label for="quantity">Quantity</label>
-  <select id="quantity" name="quantity" class="custom-select"></select>
-  <input type="submit" id="submit" class="btn btn-primary" value="Add to cart">
+  <select id="quantity" name="quantity" class="custom-select">
+    <option selected>0</option>
+  </select>
+  <input type="submit" id="submit" class="btn btn-primary" disabled value="Add to cart">
 </form>
 
 <script src="{% static 'store/javascript/product.js' %}"></script>

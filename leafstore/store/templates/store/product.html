@@ -51,16 +51,16 @@
 {% get_color_pictures product as color_id_to_pictures %}
 {{ color_id_to_pictures|json_script:"color_id_to_pictures" }}
 
-<form action="{% url 'cart:cart_add' product.id %}" method="POST">
+<form action="{% url 'cart:cart_add' product.id %}" method="POST" autocomplete="off">
   {% csrf_token %}
-  <select id="color" class="custom-select">
+  <select id="color" name="color" class="custom-select">
     <option selected>Select Color</option>
     {% for color in colors %}
       <option value="{{ color.id }}">{{ color.name }}</option>
     {% endfor %}
   </select>
   <label for="quantity">Quantity</label>
-  <select id="quantity" class="custom-select"></select>
+  <select id="quantity" name="quantity" class="custom-select"></select>
   <input type="submit" class="btn btn-primary" value="Add to cart">
 </form>
 

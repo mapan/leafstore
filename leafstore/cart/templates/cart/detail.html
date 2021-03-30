@@ -32,12 +32,13 @@
       <td>{{ item.quantity }}</td>
       <td>
         {% get_stock_for_color color.id as color_stock_range %}
-        <form action="{% url 'cart:cart_add2' product.id color.id %}" method="post">
-          <select id="quantity" class="custom-select">
+        <form action="{% url 'cart:cart_update' product.id color.id %}" method="post">
+          <select id="quantity" name="quantity" class="custom-select">
           {% for _ in color_stock_range %}
             <option>{{ forloop.counter }}</option>
           {% endfor %}
           </select>
+          <input type="hidden" name="override_quantity" value="True">
           <input type="submit" value="Update">
           {% csrf_token %}
         </form>

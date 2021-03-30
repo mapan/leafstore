@@ -11,10 +11,12 @@ def cart_add(request, product_id, color_id=None):
   product = get_object_or_404(Product, id=product_id)
   color_id = color_id or request.POST.get('color')
   color = get_object_or_404(ProductColor, id=color_id)
+  override_quantity = bool(
+      request.POST.get('override_quantity', False))
   cart.add(product=product,
            color=color,
            quantity=int(request.POST.get('quantity')),
-           override_quantity=False)
+           override_quantity=override_quantity)
   return redirect('cart:cart_detail')
 
 

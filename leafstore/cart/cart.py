@@ -27,7 +27,10 @@ class Cart(object):
     if override_quantity:
       self.cart[key]['quantity'] = quantity
     else:
-      self.cart[key]['quantity'] += quantity
+      new_quantity = self.cart[key]['quantity'] + quantity
+      if new_quantity > color.stock:
+        return
+      self.cart[key]['quantity'] = new_quantity
 
     self.save()
 

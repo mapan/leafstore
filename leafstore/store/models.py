@@ -60,14 +60,14 @@ class ProductColor(models.Model):
                               on_delete=models.CASCADE)
   name = models.CharField(max_length=10)
   stock = models.IntegerField(default=1)
+  # stock = models.PositiveIntegerField(default=1)
 
   class Meta:
     ordering = ('product__name', 'name',)
     verbose_name_plural = '3. ProductColors'
 
   def __str__(self):
-    return ('Product: {} Color: {}'.format(self.product.name,
-                                           self.name))
+    return f'Product: {self.product.name} Color: {self.name}'
 
 
 class Picture(models.Model):

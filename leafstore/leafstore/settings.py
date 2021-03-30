@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'livereload',
     'store.apps.StoreConfig',
     'cart.apps.CartConfig',
+    'orders.apps.OrdersConfig',
 ]
 
 MIDDLEWARE = [

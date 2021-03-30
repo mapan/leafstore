@@ -46,6 +46,9 @@
     </ul>
     <a class="nav-link" href="{% url 'cart:cart_detail' %}">
     <i class="bi bi-cart4" style="font-size: 2rem; color: cornflowerblue;"></i>
+    {% with total_items=cart|length %}
+    {{ total_items }} item{{ total_items|pluralize }}
+    {% endwith %}
     </a>
     <form class="form-inline my-1 my-lg-0">
       <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">

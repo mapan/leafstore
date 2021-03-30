@@ -29,13 +29,16 @@
       </td>
       <td>{{ product.name }}</td>
       <td>{{ color.name }}</td>
-      <td>{{ item.quantity }}</td>
       <td>
         {% get_stock_for_color color.id as color_stock_range %}
         <form action="{% url 'cart:cart_update' product.id color.id %}" method="post">
           <select id="quantity" name="quantity" class="custom-select">
-          {% for _ in color_stock_range %}
-            <option>{{ forloop.counter }}</option>
+          {% for _ in color_stock_range %}if
+            {% if forloop.counter == item.quantity %}
+              <option selected>{{ forloop.counter }}</option>
+            {% else %}
+              <option>{{ forloop.counter }}</option>
+            {% endif %}
           {% endfor %}
           </select>
           <input type="hidden" name="override_quantity" value="True">
@@ -63,10 +66,9 @@
   </tbody>
 </table>
 <p class="text-right">
-  <a href="{% url 'collections' %}" class="button
-    light">Continue shopping</a>
-  {% comment %} <a href="{% url "orders:order_create" %}" class="button">
+  <a href="{% url 'collections' %}" class="btn btn-info">Continue shopping</a>
+  <a href="{% url 'collections' %}" class="btn btn-info">
     Checkout
-  </a> {% endcomment %}
+  </a>
 </p>
 {% endblock %}

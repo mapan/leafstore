@@ -2,6 +2,9 @@
 {% load static %}
 {% load model_tags %}
 
+{% block title %}
+  Shopping Cart
+{% endblock %}
 
 {% block body %}
 <h1>Your shopping cart</h1>
@@ -66,8 +69,8 @@
   </tbody>
 </table>
 <p class="text-right">
-  <a href="{% url 'collections' %}" class="btn btn-info">Continue shopping</a>
-  <a href="{% url 'collections' %}" class="btn btn-info">
+  <a href="{% url 'collections' %}#collections" class="btn btn-info">Continue shopping</a>
+  <a href="{% url 'orders:order_create' %}" class="btn btn-info">
     Checkout
   </a>
 </p>

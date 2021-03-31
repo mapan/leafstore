@@ -1,7 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
 from store.models import ProductColor
-from ast import literal_eval
 
 
 class Cart(object):
